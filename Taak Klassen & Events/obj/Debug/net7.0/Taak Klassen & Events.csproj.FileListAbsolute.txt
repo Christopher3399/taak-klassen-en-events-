@@ -1,0 +1,4 @@
+C:\Users\Chris\Documents\EHB\2023-2024\.Net_Advanced\Taak Klassen & Events\obj\Debug\net7.0\Taak Klassen & Events.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chris\Documents\EHB\2023-2024\.Net_Advanced\Taak Klassen & Events\obj\Debug\net7.0\Taak Klassen & Events.AssemblyInfoInputs.cache
+C:\Users\Chris\Documents\EHB\2023-2024\.Net_Advanced\Taak Klassen & Events\obj\Debug\net7.0\Taak Klassen & Events.AssemblyInfo.cs
+C:\Users\Chris\Documents\EHB\2023-2024\.Net_Advanced\Taak Klassen & Events\obj\Debug\net7.0\Taak Klassen & Events.csproj.CoreCompileInputs.cache
