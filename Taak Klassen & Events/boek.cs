@@ -7,28 +7,14 @@ using System.Threading.Tasks;
 
 namespace Taak_Klassen___Events
 {
+    using System;
+
     public class Boek
     {
         public string Isbn { get; set; }
         public string Naam { get; set; }
         public string Uitgever { get; set; }
-        private double _prijs;
-
-        public double Prijs
-        {
-            get { return _prijs; }
-            set
-            {
-                if (value >= 5 && value <= 50)
-                {
-                    _prijs = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("Prijs moet tussen 5€ en 50€ liggen.");
-                }
-            }
-        }
+        public double Prijs { get; set; }
 
         public Boek(string isbn, string naam, string uitgever, double prijs)
         {
@@ -40,15 +26,16 @@ namespace Taak_Klassen___Events
 
         public override string ToString()
         {
-            return $"ISBN: {Isbn}, Naam: {Naam}, Uitgever: {Uitgever}, Prijs: {Prijs}€";
+            return $"ISBN: {Isbn}\nNaam: {Naam}\nUitgever: {Uitgever}\nPrijs: {Prijs:C}";
         }
 
         public void Lees()
         {
-            Console.WriteLine("Dit is een boek. Begin met lezen!");
+            Console.WriteLine($"Je leest het boek '{Naam}' door {Uitgever}.");
         }
     }
 
+    // Enum pour la périodicité du tijdschrift
     public enum Verschijningsperiode
     {
         Dagelijks,
@@ -58,23 +45,50 @@ namespace Taak_Klassen___Events
 
     public class Tijdschrift : Boek
     {
-        public Verschijningsperiode Verschijningsperiode { get; set; }
+        public Verschijningsperiode Periode { get; set; }
 
         public Tijdschrift(string isbn, string naam, string uitgever, double prijs, Verschijningsperiode periode)
             : base(isbn, naam, uitgever, prijs)
         {
-            Verschijningsperiode = periode;
+            Periode = periode;
         }
 
         public override string ToString()
         {
-            return $"{base.ToString()}, Verschijningsperiode: {Verschijningsperiode periode}";
+            return $"{base.ToString()}\nVerschijningsperiode: {Periode}";
         }
 
-        public void Lees()
+        public new void Lees()
         {
-            Console.WriteLine("Dit is een tijdschrift. Begin met lezen!");
+            Console.WriteLine($"Je leest het tijdschrift '{Naam}' ({Periode}) door {Uitgever}.");
         }
     }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Création d'instances de Boek
+            Boek boek1 = new Boek("978-3-16-148410-0", "C# Programming", "Tech Publications", 29.99);
+            Boek boek2 = new Boek("978-1-23-456789-0", "Python Basics", "Code Experts", 19.99);
+
+            // Création d'instances de Tijdschrift
+            Tijdschrift tijdschrift1 = new Tijdschrift("978-9-87-654321-0", "Tech News", "Tech World", 5.99, Verschijningsperiode.Wekelijks);
+            Tijdschrift tijdschrift2 = new Tijdschrift("978-0-12-345678-9", "Science Digest", "Science Publications", 6.99, Verschijningsperiode.Maandelijks);
+
+            // Affichage des détails
+            Console.WriteLine("Détails du Boek 1 :");
+            Console.WriteLine(boek1);
+
+            Console.WriteLine("\nDétails du Tijdschrift 1 :");
+            Console.WriteLine(tijdschrift1);
+
+            // Simulation de la lecture
+            Console.WriteLine("\nSimulation de la lecture :");
+            boek1.Lees();
+            tijdschrift1.Lees();
+        }
+    }
+
 
 }
